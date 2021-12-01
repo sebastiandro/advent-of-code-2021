@@ -20,7 +20,7 @@ int main()
     double start_time = now();
 
     FILE *fp;
-    fp = fopen("input", "r");
+    fp = fopen("1/input", "r");
 
     int window[3] = {0, 0, 0};
     int line_ix = 0;
