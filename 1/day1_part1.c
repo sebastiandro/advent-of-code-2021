@@ -28,9 +28,8 @@ int main()
         while (!feof(fp))
         {
             if (depth > prev_depth)
-            {
                 increases++;
-            }
+
             prev_depth = depth;
             fscanf(fp, "%d", &depth);
         }

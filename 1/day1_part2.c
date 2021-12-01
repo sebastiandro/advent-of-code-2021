@@ -11,10 +11,6 @@ double now()
 
 int main()
 {
-    int depth = 0;
-    int increases = 0;
-    int prev_depth = 0;
-
     double end_time;
     double total_time;
     double start_time = now();
@@ -22,17 +18,20 @@ int main()
     FILE *fp;
     fp = fopen("1/input", "r");
 
-    int window[3] = {0, 0, 0};
+    int window[3];
+    int increases = 0;
     int line_ix = 0;
-    int window_sum = 0;
+    int window_sum;
     int prev_sum = 0;
+    int depth;
+
     if (fp)
     {
         fscanf(fp, "%d", &depth);
         while (!feof(fp))
         {
 
-            // read net depth
+            // read depth
             window[line_ix % 3] = depth;
 
             line_ix++;
@@ -44,14 +43,11 @@ int main()
             // compare window sums
             window_sum = 0;
             for (int i = 0; i < 3; i++)
-            {
                 window_sum += window[i];
-            }
 
             if (window_sum > prev_sum)
-            {
                 increases++;
-            }
+
             prev_sum = window_sum;
         }
         fclose(fp);
