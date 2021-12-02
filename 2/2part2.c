@@ -1,32 +1,20 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/time.h>
 #include <string.h>
-
-double now()
-{
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    return tv.tv_sec + tv.tv_usec / 1000000.;
-}
+#include "utils.h"
 
 int main()
 {
-    double end_time;
-    double total_time;
     double start_time = now();
-
-    char direction[16];
+    char direction[8];
     int magnitude;
-    int increases = 0;
-    int prev_depth = 0;
     int x = 0;
     int y = 0;
     int aim = 0;
 
     FILE *fp;
-    fp = fopen("2/input", "r");
+    fp = fopen("2/input.txt", "r");
     if (fp)
     {
         while (!feof(fp))
@@ -50,8 +38,7 @@ int main()
         fclose(fp);
         printf("Final position is (%d,%d), multiplied: %d\n", x, y, x * y);
     }
-    end_time = now();
-    total_time = end_time - start_time;
-    printf("\nTotal runtime: %.4f seconds\n", total_time);
+    double end_time = now();
+    print_runtime(start_time, end_time);
     return 0;
 }

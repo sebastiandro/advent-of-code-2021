@@ -1,22 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/time.h>
-
-double now()
-{
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    return tv.tv_sec + tv.tv_usec / 1000000.;
-}
+#include "utils.h"
 
 int main()
 {
-    double end_time;
-    double total_time;
     double start_time = now();
 
     FILE *fp;
-    fp = fopen("1/input", "r");
+    fp = fopen("1/input.txt", "r");
 
     int window[3];
     int increases = 0;
@@ -53,8 +44,7 @@ int main()
         fclose(fp);
         printf("There are %d increases\n", increases);
     }
-    end_time = now();
-    total_time = end_time - start_time;
-    printf("Total runtime: %.4f seconds", total_time);
+    double end_time = now();
+    print_runtime(start_time, end_time);
     return 0;
 }

@@ -1,9 +1,18 @@
 DAY=$1
 echo "🎅🏼 Running solution of day $DAY 🎅🏼\n"
-echo "🎄🎄🎄🎄 Part 1"
-gcc -o $DAY/day${DAY}_part1.o $DAY/day${DAY}_part1.c && $DAY/day${DAY}_part1.o
+NUM_PARTS=$(ls $DAY | grep -c -E "[0-9]+part[0-9]+\.c")
+
+for PART in $(seq 1 $NUM_PARTS);
+do
+echo "🎄🎄🎄🎄 Part $PART"
+
+gcc -o ./utils/utils.o -c ./utils/utils.c
+gcc -Iutils -Wall -c ./${DAY}/${DAY}part$PART.c -o ./${DAY}/${DAY}part$PART.o
+gcc -o ./${DAY}/${DAY}part$PART ./utils/utils.o ./${DAY}/${DAY}part$PART.o
+./${DAY}/${DAY}part$PART
 
 echo "\n"
-echo "🎄🎄🎄🎄 Part 2"
-gcc -o $DAY/day${DAY}_part2.o $DAY/day${DAY}_part2.c && $DAY/day${DAY}_part2.o
-echo "\n"
+
+done
+
+
