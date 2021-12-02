@@ -4,15 +4,16 @@ NUM_PARTS=$(ls $DAY | grep -c -E "[0-9]+part[0-9]+\.c")
 
 for PART in $(seq 1 $NUM_PARTS);
 do
-echo "🎄🎄🎄🎄 Part $PART"
+    echo "🎄🎄🎄🎄 Part $PART"
 
-gcc -o ./utils/utils.o -c ./utils/utils.c
-gcc -Iutils -Wall -c ./${DAY}/${DAY}part$PART.c -o ./${DAY}/${DAY}part$PART.o
-gcc -o ./${DAY}/${DAY}part$PART ./utils/utils.o ./${DAY}/${DAY}part$PART.o
-./${DAY}/${DAY}part$PART
+    gcc -o ./utils/utils.o -c ./utils/utils.c
+    gcc -Iutils -Wall -c ./${DAY}/${DAY}part$PART.c -o ./${DAY}/${DAY}part$PART.o
+    gcc -o ./${DAY}/${DAY}part$PART ./utils/utils.o ./${DAY}/${DAY}part$PART.o
+    cd $DAY
+    ./${DAY}part$PART
 
-echo "\n"
-
+    cd ..
+    echo "\n"
 done
 
 

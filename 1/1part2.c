@@ -7,7 +7,7 @@ int main()
     double start_time = now();
 
     FILE *fp;
-    fp = fopen("1/input.txt", "r");
+    fp = fopen("input.txt", "r");
 
     int window[3];
     int increases = 0;

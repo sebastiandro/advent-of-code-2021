@@ -12,7 +12,7 @@ int main()
     double start_time = now();
 
     FILE *fp;
-    fp = fopen("1/input.txt", "r");
+    fp = fopen("input.txt", "r");
 
     if (fp)
     {

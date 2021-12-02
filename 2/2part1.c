@@ -13,7 +13,7 @@ int main()
     int y = 0;
 
     FILE *fp;
-    fp = fopen("2/input.txt", "r");
+    fp = fopen("input.txt", "r");
     if (fp)
     {
         while (!feof(fp))
